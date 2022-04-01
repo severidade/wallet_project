@@ -1,8 +1,8 @@
 // Coloque aqui suas actions
-export const USER_LOGIN = 'USER_LOGIN';
+export const SAVE_EMAIL = 'SAVE_EMAIL';
 
-export const userLogin = (payload) => (
+export const actionSaveEmail = (payload) => (
     {
-        type: USER_LOGIN, payload,
+        type: SAVE_EMAIL, payload,
     }
 );

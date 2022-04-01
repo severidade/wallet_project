@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { actionSaveEmail } from '../actions/index';
 import Input from '../componentes/input';
 
 
-class Login extends React.Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -43,8 +44,10 @@ class Login extends React.Component {
 
   }
 
+
   render() {
     const { email, password, isDisabled } = this.state;
+    const { emailDispatch, history } = this.props;
     return (
       <fieldset>
         <Input
@@ -53,7 +56,7 @@ class Login extends React.Component {
           name="email"
           value={ email }
           id="email"
-          data-testid="email-input"
+          datatestid="email-input"
           onChange={ this.handleInput }
           // required
         />
@@ -63,13 +66,19 @@ class Login extends React.Component {
           name="password"
           value={ password }
           id="password"
-          data-testid="password-input"
+          datatestid="password-input"
           onChange={ this.handleInput }
         />
 
         <button
           type="button"
           disabled={ isDisabled }
+          // onClick={ this.onSubmitForm }
+          onClick={ () => {
+              emailDispatch(email);
+              history.push('/carteira');
+            }
+          }
         >
           Entrar
         </button>
@@ -79,4 +88,18 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  // emailDispatch é um "apelido" para executarmos a nossa action creator
+  // Nossa action creator é a função importada do arquivo actions
+  // ou seja, actionSaveEmail,
+  // que vai receber um e-amail como parâmetro
+  // esse parâmetro é o estado do nosso componente
+  // aqui estamos apenas avisando que vai existir um parâmetro
+  // mas o estado do componente é passado no momento da execução
+    emailDispatch: (value) => dispatch(actionSaveEmail(value)),
+  }
+);
+
+// export default Login;
+export default connect(null, mapDispatchToProps)(Login);
+
