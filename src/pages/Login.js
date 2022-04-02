@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { actionSaveEmail } from '../actions/index';
 import Input from '../componentes/input';
 
-
 class Login extends Component {
   constructor() {
     super();
@@ -78,7 +77,7 @@ class Login extends Component {
         >
           Entrar
         </button>
-      </fieldset>      
+      </fieldset>
     );
   }
 }
