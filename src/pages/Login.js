@@ -83,7 +83,7 @@ class Login extends Component {
 }
 
 // Login.propTypes = {
-//   // emailDispatch: PropTypes.func.isRequired,
+// //   emailDispatch: PropTypes.func.isRequired,
 //   history: PropTypes.shape({
 //     push: PropTypes.func.isRequired,
 //   }).isRequired,
