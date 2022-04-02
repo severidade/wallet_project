@@ -68,20 +68,27 @@ class Login extends Component {
           onChange={ this.handleInput }
         />
         <button
-         type="button"
-         disabled={ isDisabled }
+          type="button"
+          disabled={ isDisabled }
         // onClick={ this.onSubmitForm }
-         onClick={ () => {
-          emailDispatch(email);
-          history.push('/carteira');
-        }} 
-        >
+          onClick={ () => {
+            emailDispatch(email);
+            history.push('/carteira');
+          } } 
+         >
           Entrar
         </button>
-    </fieldset>      
+      </fieldset>      
     );
   }
 }
+
+Login.propTypes = {
+  // dispatchSetValue: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const mapDispatchToProps = (dispatch) => ({
   // emailDispatch é um "apelido" para executarmos a nossa action creator
