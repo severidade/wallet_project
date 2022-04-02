@@ -19,7 +19,7 @@ class Login extends Component {
     this.enableButton = this.enableButton.bind(this);
   }
 
-  handleInput = ( { target }) => {
+  handleInput = ({ target }) => {
     const { name, value } = target;
     const { enableButton } = this;
     
@@ -84,7 +84,7 @@ class Login extends Component {
         </button>
 
       </fieldset>      
-    )
+    );
   }
 }
 
@@ -96,10 +96,9 @@ const mapDispatchToProps = (dispatch) => ({
   // esse parâmetro é o estado do nosso componente
   // aqui estamos apenas avisando que vai existir um parâmetro
   // mas o estado do componente é passado no momento da execução
-    emailDispatch: (value) => dispatch(actionSaveEmail(value)),
-  }
+  emailDispatch: (value) => dispatch(actionSaveEmail(value)),
+}
 );
 
 // export default Login;
 export default connect(null, mapDispatchToProps)(Login);
-
