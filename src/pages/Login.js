@@ -22,7 +22,7 @@ class Login extends Component {
   handleInput = ({ target }) => {
     const { name, value } = target;
     const { enableButton } = this;
-    
+
     // this.setState({ [name]: value });
     this.setState({
       [name]: value,
@@ -74,8 +74,8 @@ class Login extends Component {
           onClick={ () => {
             emailDispatch(email);
             history.push('/carteira');
-          } } 
-         >
+          } }
+        >
           Entrar
         </button>
       </fieldset>      
@@ -84,7 +84,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  // dispatchSetValue: PropTypes.func.isRequired,
+  emailDispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
