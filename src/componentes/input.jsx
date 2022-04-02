@@ -25,6 +25,7 @@ Input.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
+  datatestid: PropTypes.string,
   id: PropTypes.string,
   onChange: PropTypes.func,
 };

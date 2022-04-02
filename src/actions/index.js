@@ -2,7 +2,7 @@
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 
 export const actionSaveEmail = (payload) => (
-    {
-        type: SAVE_EMAIL, payload,
-    }
+  {
+    type: SAVE_EMAIL, payload,
+  }
 );
