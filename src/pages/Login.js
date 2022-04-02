@@ -68,18 +68,17 @@ class Login extends Component {
           onChange={ this.handleInput }
         />
         <button
-          type="button"
-          disabled={ isDisabled }
-          // onClick={ this.onSubmitForm }
-          onClick={ () => {
-              emailDispatch(email);
-              history.push('/carteira');
-            }
-          }
+         type="button"
+         disabled={ isDisabled }
+        // onClick={ this.onSubmitForm }
+         onClick={ () => {
+          emailDispatch(email);
+          history.push('/carteira');
+        }} 
         >
           Entrar
         </button>
-      </fieldset>      
+    </fieldset>      
     );
   }
 }
