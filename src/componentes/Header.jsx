@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   render() {
-    // const { type, name, label, onChange, value, id, datatestid } = this.props;
+    const { totalValue } = this.props;
     return (
       <header>
         <div className="email">
@@ -11,7 +12,9 @@ class Header extends Component {
         </div>
         <div>
           <span>Despesa</span>
-          <span data-testid="total-field"> AQUI ENTRA A DESPESA</span>
+          <span data-testid="total-field">
+            { `${totalValue}` }
+          </span>
         </div>
         <div>
           <span>Moeda</span>
@@ -21,5 +24,13 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  totalValue: PropTypes.arrayOf(PropTypes.object),
+};
+
+Header.defaultProps = {
+  totalValue: [],
+};
 
 export default Header;
