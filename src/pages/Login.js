@@ -70,7 +70,7 @@ class Login extends Component {
         <button
           type="button"
           disabled={ isDisabled }
-        // onClick={ this.onSubmitForm }
+          // onClick={ this.onSubmitForm }
           onClick={ () => {
             emailDispatch(email);
             history.push('/carteira');
