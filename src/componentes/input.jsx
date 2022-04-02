@@ -35,6 +35,7 @@ Input.defaultProps = {
   value: '',
   name: '',
   id: '',
+  datatestid: '',
   onChange: null,
 };
 

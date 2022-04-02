@@ -41,9 +41,7 @@ class Login extends Component {
     } else {
       this.setState({ isDisabled: true });
     }
-
   }
-
 
   render() {
     const { email, password, isDisabled } = this.state;
@@ -69,7 +67,6 @@ class Login extends Component {
           datatestid="password-input"
           onChange={ this.handleInput }
         />
-
         <button
           type="button"
           disabled={ isDisabled }
@@ -82,7 +79,6 @@ class Login extends Component {
         >
           Entrar
         </button>
-
       </fieldset>      
     );
   }
