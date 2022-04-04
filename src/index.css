@@ -27,12 +27,21 @@ header {
   color: rgb(255, 255, 255);
   display: flex;
   height: 70px;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   max-width: 100%;
+  padding: 20px;
   width: 100vw;
 }
 
 .expenses, .currency, .email {
   display: flex;
   gap: 10px;
+}
+
+.expenses, .currency {
+  margin-right: 60px;
+}
+
+.email {
+  margin-right: 120px;
 }
