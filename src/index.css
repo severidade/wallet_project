@@ -45,3 +45,14 @@ header {
 .email {
   margin-right: 120px;
 }
+
+.expense_form {
+  align-items: center;
+  background: olive;
+  display: flex;
+  height: 90px;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 20px;
+  width: 100vw;
+}

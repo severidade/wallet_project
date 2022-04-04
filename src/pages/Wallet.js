@@ -4,6 +4,7 @@ import React from 'react';
 // import { connect } from 'react-redux';
 
 import Header from '../componentes/Header';
+import ExpenseForm from '../componentes/ExpenseForm';
 
 class Wallet extends React.Component {
   constructor() {
@@ -20,7 +21,8 @@ class Wallet extends React.Component {
       <>
         {/* <Header totalValue={ totalValue } email={ email } /> */}
         <Header totalValue={ totalValue } />
-        <p>vou colocar as coisas aqui</p>
+        <ExpenseForm />
+        {/* <p>vou colocar as coisas aqui</p> */}
       </>
     );
   }
