@@ -32,9 +32,74 @@ class ExpenseForm extends Component {
     const { currenciesAPI } = this.state;
     console.log(currenciesAPI);
     return (
-      <div className="expense_form">
-        <p>Este sera o componente que irá adicionar as despesas</p>
-      </div>
+      <form className="expense_form">
+        <label htmlFor="value">
+          <span>Valor:</span>
+          <input
+            id="value"
+            name="value-input"
+            data-testid="value-input"
+            placeholder="Qual o valor da despesa?"
+            type="number"
+            // value={ value }
+            // onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="description">
+          <span>Descrição:</span>
+          <input
+            id="description"
+            name="description-input"
+            data-testid="description-input"
+            placeholder="descreva a despesa"
+            type="text"
+            // value={ description }
+            // onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="currency">
+          <span>Moeda</span>
+          <select
+            id="currency"
+            name="currency-input"
+            data-testid="currency-input"
+            // value={ currency }
+            // onChange={ this.handleChange }
+          >
+            { currenciesAPI.map(
+              (coin) => (<option key={ coin } value={ coin }>{coin}</option>),
+            )}
+          </select>
+        </label>
+        <label htmlFor="method">
+          <span>Forma de pagamento</span>
+          <select
+            id="method"
+            name="method-input"
+            data-testid="method-input"
+            // value= { method }
+            // onChange={ this.handleChange }
+          >
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
+          </select>
+        </label>
+        <label htmlFor="tag">
+          <span>Categoria</span>
+          <select
+            id="tag"
+            name="tag-input"
+            data-testid="tag-input"
+          >
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
+          </select>
+        </label>
+      </form>
     );
   }
 }

@@ -50,9 +50,15 @@ header {
   align-items: center;
   background: olive;
   display: flex;
+  gap: 20px;
   height: 90px;
-  justify-content: space-between;
+  justify-content: flex-start;
   max-width: 100%;
   padding: 20px;
   width: 100vw;
+}
+
+.expense_form label {
+  display: flex;
+  gap: 10px;
 }
