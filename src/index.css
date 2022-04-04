@@ -1,3 +1,12 @@
+*, 
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,4 +30,9 @@ header {
   justify-content: space-evenly;
   max-width: 100%;
   width: 100vw;
+}
+
+.expenses, .currency, .email {
+  display: flex;
+  gap: 10px;
 }

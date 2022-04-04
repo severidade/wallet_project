@@ -1,4 +1,8 @@
 import React from 'react';
+// para pegar o e-mail do redux
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Header from '../componentes/Header';
 
 class Wallet extends React.Component {
@@ -11,13 +15,24 @@ class Wallet extends React.Component {
 
   render() {
     const { totalValue } = this.state;
+    const { email } = this.props;
     return (
       <>
-        <Header totalValue={ totalValue } />
+        <Header totalValue={ totalValue } email={ email } />
         <p>vou colocar as coisas aqui</p>
       </>
     );
   }
 }
 
-export default Wallet;
+Wallet.propTypes = {
+  email: PropTypes.string.isRequired,
+};
+
+// Lendo as informaçoes do redux
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+});
+
+// export default Wallet;
+export default connect(mapStateToProps)(Wallet);
