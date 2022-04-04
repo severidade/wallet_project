@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// para pegar o e-mail do redux
+import { connect } from 'react-redux';
+
 class Header extends Component {
   render() {
     const { totalValue, email } = this.props;
+    // const { email } = this.props;
     return (
       <header>
         <div className="email">
@@ -36,4 +40,9 @@ Header.defaultProps = {
   totalValue: [],
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+});
+
+// export default Header;
+export default connect(mapStateToProps)(Header);
