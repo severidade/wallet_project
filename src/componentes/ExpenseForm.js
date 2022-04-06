@@ -3,14 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actionSaveCurrent } from '../actions/index';
+// import { actionSaveWallet } from '../actions/index';
+// import * as ALL_ACTIONS from '../actions/index';
+import Button from './Button';
 
 class ExpenseForm extends Component {
   constructor() {
     super();
     this.state = {
       currenciesAPI: [],
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
     };
+
     this.getCurrencies = this.getCurrencies.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -28,9 +38,22 @@ class ExpenseForm extends Component {
     saveCurrencies(currencies);
   }
 
+  handleChange({ target: { id, value } }) {
+    this.setState({
+      [id]: value,
+    });
+  }
+
   render() {
-    const { currenciesAPI } = this.state;
-    console.log(currenciesAPI);
+    const {
+      currenciesAPI,
+      value,
+      description,
+      currency,
+      method,
+      tag,
+    } = this.state;
+
     return (
       <form className="expense_form">
         <label htmlFor="value">
@@ -41,8 +64,8 @@ class ExpenseForm extends Component {
             data-testid="value-input"
             placeholder="Qual o valor da despesa?"
             type="number"
-            // value={ value }
-            // onChange={ this.handleChange }
+            value={ value }
+            onChange={ this.handleChange }
           />
         </label>
         <label htmlFor="description">
@@ -53,8 +76,8 @@ class ExpenseForm extends Component {
             data-testid="description-input"
             placeholder="descreva a despesa"
             type="text"
-            // value={ description }
-            // onChange={ this.handleChange }
+            value={ description }
+            onChange={ this.handleChange }
           />
         </label>
         <label htmlFor="currency">
@@ -63,8 +86,8 @@ class ExpenseForm extends Component {
             id="currency"
             name="currency-input"
             data-testid="currency-input"
-            // value={ currency }
-            // onChange={ this.handleChange }
+            value={ currency }
+            onChange={ this.handleChange }
           >
             { currenciesAPI.map(
               (coin) => (<option key={ coin } value={ coin }>{coin}</option>),
@@ -77,8 +100,8 @@ class ExpenseForm extends Component {
             id="method"
             name="method-input"
             data-testid="method-input"
-            // value= { method }
-            // onChange={ this.handleChange }
+            value={ method }
+            onChange={ this.handleChange }
           >
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
@@ -91,6 +114,8 @@ class ExpenseForm extends Component {
             id="tag"
             name="tag-input"
             data-testid="tag-input"
+            value={ tag }
+            onChange={ this.handleChange }
           >
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
@@ -99,6 +124,11 @@ class ExpenseForm extends Component {
             <option value="Saúde">Saúde</option>
           </select>
         </label>
+        <Button
+          onClick={ this.handleClick }
+        >
+          Adicionar despesa
+        </Button>
       </form>
     );
   }
@@ -114,6 +144,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveCurrencies: (currencies) => dispatch(actionSaveCurrent(currencies)),
+  // saveCurrencies: (currencies) => dispatch(ALL_ACTIONS.actionSaveCurrent(currencies)),
 });
 
 // export default ExpenseForm;
