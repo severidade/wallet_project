@@ -33,6 +33,34 @@ header {
   width: 100vw;
 }
 
+.home_login {
+  align-items: center;
+  background: black;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  max-width: 100%;
+  width: 100vw;
+}
+
+.home_login > form {
+  background-color: #d6d4d4;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vh;
+}
+
+.home_login button {
+  width: 200px;
+  height: 40px;
+  color:black
+}
+
 .expenses, .currency, .email {
   display: flex;
   gap: 10px;
@@ -70,6 +98,8 @@ label[for=description] {
 
 label > input,
 label > select {
+  background: rgb(255, 255, 255);
+  border: none;
   border-radius: 5px;
   height: 40px;
   padding: 5px;

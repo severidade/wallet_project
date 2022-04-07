@@ -47,38 +47,40 @@ class Login extends Component {
     const { email, password, isDisabled } = this.state;
     const { emailDispatch, history } = this.props;
     return (
-      <fieldset>
-        <Input
-          label="email: "
-          type="email"
-          name="email"
-          value={ email }
-          id="email"
-          datatestid="email-input"
-          onChange={ this.handleInput }
-          // required
-        />
-        <Input
-          label="senha: "
-          type="password"
-          name="password"
-          value={ password }
-          id="password"
-          datatestid="password-input"
-          onChange={ this.handleInput }
-        />
-        <button
-          type="button"
-          disabled={ isDisabled }
-          // onClick={ this.onSubmitForm }
-          onClick={ () => {
-            emailDispatch(email);
-            history.push('/carteira');
-          } }
-        >
-          Entrar
-        </button>
-      </fieldset>
+      <div className="home_login">
+        <form>
+          <Input
+            label="email: "
+            type="email"
+            name="email"
+            value={ email }
+            id="email"
+            datatestid="email-input"
+            onChange={ this.handleInput }
+            // required
+          />
+          <Input
+            label="senha: "
+            type="password"
+            name="password"
+            value={ password }
+            id="password"
+            datatestid="password-input"
+            onChange={ this.handleInput }
+          />
+          <button
+            type="button"
+            disabled={ isDisabled }
+            // onClick={ this.onSubmitForm }
+            onClick={ () => {
+              emailDispatch(email);
+              history.push('/carteira');
+            } }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     );
   }
 }

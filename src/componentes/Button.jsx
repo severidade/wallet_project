@@ -7,7 +7,7 @@ export default function Button({ onClick, children }) {
   return (
     <button
       type="button"
-      onnClick={ onClick }
+      onClick={ onClick }
     >
       {children}
     </button>
@@ -16,5 +16,5 @@ export default function Button({ onClick, children }) {
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };

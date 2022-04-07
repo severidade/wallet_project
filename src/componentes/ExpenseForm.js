@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { actionSaveCurrent } from '../actions/index';
-// import { actionSaveWallet } from '../actions/index';
-// import * as ALL_ACTIONS from '../actions/index';
+import { actionSaveCurrent, actionSaveWallet } from '../actions/index';
+// import * as ACT from '../actions/index';
+
 import Button from './Button';
 
 class ExpenseForm extends Component {
@@ -12,6 +12,7 @@ class ExpenseForm extends Component {
     super();
     this.state = {
       currenciesAPI: [],
+      id: 0,
       value: '',
       description: '',
       currency: 'USD',
@@ -21,6 +22,7 @@ class ExpenseForm extends Component {
 
     this.getCurrencies = this.getCurrencies.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,33 @@ class ExpenseForm extends Component {
       currenciesAPI: currencies,
     });
     saveCurrencies(currencies);
+  }
+
+  async handleClick(event) {
+    event.preventDefault();
+    const { id, value, description, currency, method, tag } = this.state;
+    const { sendExpense } = this.props;
+    console.log(sendExpense);
+    const getApi = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const exchangeRates = await getApi.json();
+    const expenseInfo = {
+      id,
+      value,
+      description,
+      currency,
+      method,
+      tag,
+      exchangeRates,
+    };
+    sendExpense(expenseInfo);
+    this.setState({
+      id: 0,
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: this.aliment,
+    });
   }
 
   handleChange({ target: { id, value } }) {
@@ -134,17 +163,18 @@ class ExpenseForm extends Component {
   }
 }
 
-ExpenseForm.propTypes = {
-  saveCurrencies: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
 });
 
+ExpenseForm.propTypes = {
+  saveCurrencies: PropTypes.func.isRequired,
+  sendExpense: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => ({
   saveCurrencies: (currencies) => dispatch(actionSaveCurrent(currencies)),
-  // saveCurrencies: (currencies) => dispatch(ALL_ACTIONS.actionSaveCurrent(currencies)),
+  sendExpense: (expenses) => dispatch(actionSaveWallet(expenses)),
 });
 
 // export default ExpenseForm;

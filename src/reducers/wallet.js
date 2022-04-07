@@ -8,11 +8,6 @@ const INITIAL_STATE = {
 
 function wallet(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case SAVE_CURRENT:
-    return ({
-      ...state,
-      currencies: action.payload,
-    });
   case SAVE_WALLET:
     return ({
       ...state,
@@ -23,6 +18,13 @@ function wallet(state = INITIAL_STATE, action) {
         },
       ],
     });
+
+  case SAVE_CURRENT:
+    return ({
+      ...state,
+      currencies: action.payload,
+    });
+
   default:
     return state;
   }

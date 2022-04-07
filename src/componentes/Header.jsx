@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// para pegar o e-mail do redux
 import { connect } from 'react-redux';
 
 class Header extends Component {
   totalValue = () => {
     const { expenses } = this.props;
-    const total = expenses.reduce((acc, curr) => {
-      acc += curr.value * curr.exchangeRates[curr.currency].ask;
-      return acc;
+    const total = expenses.reduce((i, curr) => {
+      i += curr.value * curr.exchangeRates[curr.currency].ask;
+      return i;
     }, 0);
     return total;
   }
 
   render() {
-    const { totalValue, email } = this.props;
+    const { email } = this.props;
+    const { totalValue } = this;
     // const { email } = this.props;
     return (
       <header>
@@ -28,7 +28,7 @@ class Header extends Component {
         <div className="expenses">
           <span className="label">Despesa:</span>
           <span data-testid="total-field">
-            { `${totalValue}` }
+            { `${totalValue().toFixed(2)}` }
           </span>
         </div>
         <div className="currency">
@@ -40,20 +40,14 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  totalValue: PropTypes.arrayOf(PropTypes.object),
-  email: PropTypes.string.isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-Header.defaultProps = {
-  totalValue: [],
-};
-
 const mapStateToProps = (state) => ({
   email: state.user.email,
   expenses: state.wallet.expenses,
 });
 
-// export default Header;
+Header.propTypes = {
+  email: PropTypes.string.isRequired,
+  expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default connect(mapStateToProps, null)(Header);
