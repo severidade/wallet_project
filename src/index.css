@@ -133,18 +133,29 @@ label[for=description] > input {
 }
 
 table {
+  margin:0;
+  padding:0;
+  border:none;
+  border-collapse:collapse;
+  border-spacing:0;
   width: 80%;
   min-width: 800px;
   margin: auto;
 }
 
 th {
+  border-bottom: 1px double;
+  padding: 0 0 20px 0 ;
   text-align: start;
 }
 
 tbody td {
-  border-bottom: 1px dashed;
+  border-bottom: 1px dotted;
   padding: 20px 0;
+}
+
+tr td:first-child, tr th:first-child {
+  width: 25%;
 }
 
 tbody tr:last-child td {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { actionSaveEmail } from '../actions/index';
 // import Input from '../componentes/Input';
-import Input from '../componentes/Input'
+import Input from '../componentes/Input';
 
 class Login extends Component {
   constructor() {

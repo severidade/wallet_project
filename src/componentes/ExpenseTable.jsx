@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class ExpenseTable extends Component {
   render() {
+    const { expenses } = this.props;
     return (
       <div className="conteiner_expense_table">
         <table>
@@ -19,17 +22,23 @@ class ExpenseTable extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td> ---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-              <td>---/---</td>
-            </tr>
+            {expenses.map((expense) => (
+              <tr key={ expense.id }>
+                <td>{ expense.description }</td>
+                <td>{ expense.tag }</td>
+                <td>{ expense.method }</td>
+                <td>{ parseFloat(expense.value).toFixed(2) }</td>
+                <td>
+                  { expense.exchangeRates[expense.currency].name.replace('/Real Brasileiro', '')}
+                </td>
+                <td>
+                  { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
+                </td>
+                <td>{(Number(expense.exchangeRates[expense.currency].ask) * Number(expense.value)).toFixed(2)}</td>
+                <td>Real</td>
+                <td>---/---</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -37,4 +46,13 @@ class ExpenseTable extends Component {
   }
 }
 
-export default (ExpenseTable);
+const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
+});
+
+ExpenseTable.prototypes = {
+  expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+// export default (ExpenseTable);
+export default connect(mapStateToProps, null)(ExpenseTable);
