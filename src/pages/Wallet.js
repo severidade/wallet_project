@@ -5,6 +5,7 @@ import React from 'react';
 
 import Header from '../componentes/Header';
 import ExpenseForm from '../componentes/ExpenseForm';
+import ExpenseTable from '../componentes/ExpenseTable';
 
 class Wallet extends React.Component {
   constructor() {
@@ -19,10 +20,9 @@ class Wallet extends React.Component {
     // const { email } = this.props;
     return (
       <>
-        {/* <Header totalValue={ totalValue } email={ email } /> */}
         <Header totalValue={ totalValue } />
         <ExpenseForm />
-        {/* <p>vou colocar as coisas aqui</p> */}
+        <ExpenseTable />
       </>
     );
   }
