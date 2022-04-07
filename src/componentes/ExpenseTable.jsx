@@ -29,12 +29,16 @@ class ExpenseTable extends Component {
                 <td>{ expense.method }</td>
                 <td>{ parseFloat(expense.value).toFixed(2) }</td>
                 <td>
-                  { expense.exchangeRates[expense.currency].name.replace('/Real Brasileiro', '')}
+                  { expense.exchangeRates[expense.currency]
+                    .name.replace('/Real Brasileiro', '')}
                 </td>
                 <td>
                   { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
                 </td>
-                <td>{(Number(expense.exchangeRates[expense.currency].ask) * Number(expense.value)).toFixed(2)}</td>
+                <td>
+                  {(Number(expense.exchangeRates[expense.currency].ask)
+                  * Number(expense.value)).toFixed(2)}
+                </td>
                 <td>Real</td>
                 <td>---/---</td>
               </tr>
@@ -50,7 +54,7 @@ const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
 
-ExpenseTable.prototypes = {
+ExpenseTable.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
