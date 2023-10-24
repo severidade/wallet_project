@@ -28,7 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
-    "install:front": "comando-para-instalar-dependencias-front"
+    "install:front": "npm install"
   },
   "eslintConfig": {
     "extends": "react-app"
