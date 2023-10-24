@@ -1,5 +1,3 @@
-# .github/workflows/deploy-front.yml
-
 name: CI -> Deploy to My website
 on:
   push:
@@ -16,9 +14,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.18.1
-      - run: npm run install:front 
-      - run: npm run build:front
-      - run: cp ./front-end/.htaccess ./front-end/build
+      - run: npm install --force
+      - run: npm run build
+      - run: cp .htaccess ./build
 
       # Deploy do front
       - name: Upload from public_html via FTP
