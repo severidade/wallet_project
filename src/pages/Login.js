@@ -50,6 +50,7 @@ class Login extends Component {
     return (
       <div className="home_login">
         <form>
+          <h1>titilo</h1>
           <Input
             label="email: "
             type="email"
